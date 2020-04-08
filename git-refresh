@@ -1,0 +1,16 @@
+#!/usr/local/bin/fish
+
+# "Refresh" the local repository, i.e., pull the latest versions of
+# `master` and `develop` branch
+
+# This is a first draft. Currently, it can't deal with changes in the current
+# index.
+
+set currentBranch (git symbolic-ref --quiet --short HEAD)
+
+git checkout develop
+git pull
+git checkout master
+git pull
+
+git checkout $currentBranch
