@@ -1,0 +1,13 @@
+#!/usr/local/bin/fish
+
+# Push both the develop as well as the master branches, along with
+# the tags.
+
+set currentBranch (git symbolic-ref --quiet --short HEAD)
+
+git checkout develop
+git push
+git checkout master
+git push --follow-tags
+
+git checkout "$currentBranch"
